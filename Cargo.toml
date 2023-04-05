@@ -16,6 +16,18 @@ actix-web = "4.3.1"
 serde = { version = "1.0.159", features = ["derive"] }
 tokio = { version = "1.27.0", features = ["macros", "rt-multi-thread"] }
 
+[dependencies.sqlx]
+version = "0.6.3"
+default-features = false
+features = [
+"runtime-actix-rustls",
+"macros",
+"postgres",
+"uuid",
+"chrono",
+"migrate"
+]
+
 # Dev dependencies are used exclusively when running tests or examples
 # They do not get included in the final application binary!
 [dev-dependencies]
