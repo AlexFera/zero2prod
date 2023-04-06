@@ -1,3 +1,6 @@
+use config::Config;
+use config::File;
+use config::FileFormat;
 use secrecy::ExposeSecret;
 use secrecy::Secret;
 
@@ -40,13 +43,10 @@ impl DatabaseSettings {
 }
 
 pub fn get_configuration() -> Result<Settings, config::ConfigError> {
-    // Initialise our configuration reader
-    let mut settings = config::Config::default();
-    // Add configuration values from a file named `configuration`.
-    // It will look for any top-level file with an extension
-    // that `config` knows how to parse: yaml, json, etc.
-    settings.merge(config::File::with_name("configuration"))?;
-    // Try to convert the configuration values it read into
-    // our Settings type
-    settings.try_into()
+    let config = Config::builder()
+        .add_source(File::new("configuration", FileFormat::Yaml))
+        .build()
+        .expect("Could not read configuration file");
+
+    config.try_deserialize()
 }
