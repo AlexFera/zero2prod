@@ -30,13 +30,13 @@ tracing-actix-web = "0.7.3"
 version = "0.6.3"
 default-features = false
 features = [
-"runtime-actix-rustls",
-"macros",
-"postgres",
-"uuid",
-"chrono",
-"migrate",
-"offline"
+    "runtime-actix-rustls",
+    "macros",
+    "postgres",
+    "uuid",
+    "chrono",
+    "migrate",
+    "offline"
 ]
 
 # Dev dependencies are used exclusively when running tests or examples
