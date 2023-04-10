@@ -17,6 +17,7 @@ COPY . .
 ENV SQLX_OFFLINE true
 # Build our project
 RUN cargo build --release --bin zero2prod
+
 FROM debian:buster-slim AS runtime
 WORKDIR /app
 RUN apt-get update -y \
