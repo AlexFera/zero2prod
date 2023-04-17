@@ -13,8 +13,9 @@ name = "zero2prod"
 
 [dependencies]
 actix-web = "4.3.1"
+reqwest = { version = "0.11.16", default-features = false, features = ["json", "rustls-tls"] }
 serde = { version = "1.0.159", features = ["derive"] }
-tokio = { version = "1.23.1", features = ["macros", "rt-multi-thread"] }
+tokio = { version = "1.23.1", features = ["macros", "rt-multi-thread", "rt"] }
 config = "0.13.3"
 uuid = { version = "1.3.0", features = ["v4"] }
 chrono = { version = "0.4.24", default-features = false, features = ["clock"] }
@@ -44,10 +45,11 @@ features = [
 # Dev dependencies are used exclusively when running tests or examples
 # They do not get included in the final application binary!
 [dev-dependencies]
-reqwest = "0.11.16"
 once_cell = "1.17.1"
 claims = "0.7.1"
 quickcheck = "1.0.3"
 quickcheck_macros = "1.0.0"
 rand = "0.8.5"
 fake = "2.5.0"
+wiremock = "0.5.18"
+serde_json = "1.0.96"
